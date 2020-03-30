@@ -9,10 +9,13 @@ private:
     std::vector<int> &container;
     int prim;
     int ult;
+    void swap(std::vector<int> &cont,int &first, const int &last);
+    int posMinimo(std::vector<int> &cont, int &first, int &last);
 public:
-    Sorting(std::vector<int> &container, const int &prim,const int &ult) : container(container),
-    prim(prim),ult(ult){insertionSort();};
-    void insertionSort();
+    explicit Sorting(std::vector<int> &container,const int &prim,const int &ult) : container(container),
+    prim(prim),ult(ult){selectionSort();}
+
+    void selectionSort();
 };
 
 

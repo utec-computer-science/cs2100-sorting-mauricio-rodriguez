@@ -3,9 +3,11 @@
 using namespace std;
 
 int main(int, char*[]){
-    vector<int> vec{1,8,6,9,0,1,5};
+    vector<int> vec{1,6,3,7,9,1,0};
+
     Sorting sort(vec,0,vec.size());
-    for (int i =0;i<vec.size();i++)
-        cout<<vec[i]<<endl;
-        return 0;
+    for (auto i = vec.begin(); i <vec.end();i++){
+      cout<<*i<<endl;
+    }
+    return 0;
 }
