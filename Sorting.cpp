@@ -40,11 +40,20 @@ void Sorting::mergeSort(const int &first, const int &last) {
 
 void Sorting::heapSort(const int &first, const int &last) {
     doHeap(first,last);
-    for (int i=last;i>first+1;i--){
+    for (int i=last-1;i>first+1;i--){
         swap(mainContainer,first,i);
         push(first,i-1,first);
     }
 }
+
+void Sorting::quickSort(const int &first, const int &last) {
+    if (first<last){
+        int l = pivote(first,last);
+        quickSort(first,l-1);
+        quickSort(l+1,last);
+    }
+}
+
 
 void Sorting::merge(std::vector<int> &cont, const int &first, int &mit, const int &last) {
     std::vector<int> cont2; std::vector<int> cont3;
@@ -102,11 +111,23 @@ void Sorting::swap(std::vector<int> &cont, const int &first, const int &last) {
 void Sorting::push(const int &first, const int &last, const int &i) {
     int k = i-first+1;
     int j=k;
-    while (j!=k){
-        if (2*j<=(last-first+1) && mainContainer[2*j+first-1]> mainContainer[k+first-1])
-            k= 2*j;
-        if (2*j<(last-first+1) && mainContainer[2*j+first]> mainContainer[k+first-1])
-            k = 2*j+1;
+    if (2*j<=(last-first+1) && mainContainer[2*j+first-1]> mainContainer[k+first-1])
+        k= 2*j;
+    if (2*j<(last-first+1) && mainContainer[2*j+first]> mainContainer[k+first-1])
+        k = 2*j+1;
+    if (k!=j)
         swap(mainContainer,j+first-1,k+first-1);
+}
+
+int Sorting::pivote(const int &first, const int &last) {
+    int p = mainContainer[last];
+    int i = first - 1;
+    for (int j = first; j <= last - 1; j++){
+        if (mainContainer[j] < p){
+            i++;
+            swap(mainContainer, i, j);
+        }
     }
+    swap(mainContainer, i + 1, last);
+    return i + 1;
 }
