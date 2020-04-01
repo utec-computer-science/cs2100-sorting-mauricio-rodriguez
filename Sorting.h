@@ -16,7 +16,7 @@ private:
                const int &first, int &mit, const int &last);
 public:
     Sorting(std::vector<int> &container, const int &prim,const int &ult) : mainContainer(container),
-    prim(prim), ult(ult){heapSort(ult);};
+    prim(prim), ult(ult){shellSort(ult);};
 
     void insertionSort();
     void selectionSort();
@@ -24,6 +24,7 @@ public:
     void mergeSort(const int &first,const int &last );
     void heapSort(const int &last );
     void quickSort(const int &first,const int &last );
+    void shellSort(const int &last);
 };
 
 

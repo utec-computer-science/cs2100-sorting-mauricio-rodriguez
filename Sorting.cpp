@@ -55,6 +55,17 @@ void Sorting::quickSort(const int &first, const int &last) {
     }
 }
 
+void Sorting::shellSort(const int &last) {
+for (int i= last/2;i>0; i/=2)
+    for (int j = i;j<last;j+=1){
+        int temp = mainContainer[j];
+        int k;
+        for (k=j; k>=i && mainContainer[k-i]>temp;k-=i)
+            mainContainer[k] = mainContainer[k-i];
+        mainContainer[k] = temp;
+    }
+}
+
 
 void Sorting::merge(std::vector<int> &cont, const int &first, int &mit, const int &last) {
     std::vector<int> cont2; std::vector<int> cont3;
